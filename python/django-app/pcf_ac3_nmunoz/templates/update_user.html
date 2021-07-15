@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% block title %} Update user {% endblock title %}
+{% block content %}
+<body>
+    <div class="container" style="max-width: 400px">
+        <form action="" method="POST">
+            {% csrf_token %}
+            <div class="row">
+                <h1><i class="fa fa-lock" aria-hidden="true"></i>Login</h1>
+                <br>
+            </div><br /><br />
+            {% for message in messages %}
+            <h2 style="color: red;"><strong>{{message}}</strong></h2>
+            {% endfor %}
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="fas fa-user-tie"></i></span>
+                </div>
+                <input type="text" name="username" class="form-control" placeholder="username" />
+            </div><br />
+
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="fa fa-email icon"></i></span>
+                </div>
+                <input type="Password" name="email" class="form-control" placeholder="email@example.com" />
+            </div><br />
+
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="fa fa-key icon"></i></span>
+                </div>
+                <input type="Password" name="password1" class="form-control" placeholder="choose password" />
+            </div><br />
+
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="fa fa-key icon"></i></span>
+                </div>
+                <input type="Password" name="password2" class="form-control" placeholder="confirm password" />
+            </div><br />
+
+            <button type="submit" class="btn btn-success"><span class="glyphicon glyphicon-off"></span>Update</button>
+        </form>
+    </div>
+</body>
+{% endblock content %}

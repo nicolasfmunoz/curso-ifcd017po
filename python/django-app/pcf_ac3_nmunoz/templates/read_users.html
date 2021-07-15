@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block title %} User list {% endblock title %}
+{% block content %}
+    <div class="container" style="max-width: 600px">
+        <table>
+            <tr>
+                <th style="text-align: left; min-width: 30px">ID</th>
+                <th style="text-align: center">USERNAME</th>
+                <th style="text-align: center">EMAIL</th>
+                <th style="text-align: center" colspan="2">ACTIONS</th>
+            </tr>
+            {% for user in users %}
+            <tr>
+                <td>{{user.id}}</td>
+                <td>{{user.username}}</td>
+                <td>{{user.email}}</td>
+                <td><a href="{% url 'update' user.id %}" class="btn btn-success">Edit</a></td>
+                <td><a href="{% url 'delete' user.id %}" class="btn btn-danger">Delete</a></td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+{% endblock content %}

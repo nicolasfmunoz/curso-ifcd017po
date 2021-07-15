@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% block title %} Births by age {% endblock title %}
+{% block content %}
+
+<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+<script>
+   google.load("visualization", "1", {packages:["corechart"]});
+   google.setOnLoadCallback(drawChart);
+   function drawChart() {
+     var data = google.visualization.arrayToDataTable([
+       ['Field', 'Nº de nacimientos'],
+       {% for key, value in births.items %}
+       ["{{key}}", {{value}}],
+       {% endfor %}
+     ]);
+     var options = {
+       title: 'Real time births in Madrid'
+     }
+     new google.visualization.ColumnChart(
+       document.getElementById('births-chart')
+     ).draw(data, options);
+   }
+ </script>
+<body>
+<h1 align="center">Births by age</h1>
+<div id="births-chart" style="width: 75%%; height: 600px; text-align: center">
+</div>
+</body>
+
+{% endblock content %}
